@@ -4,6 +4,303 @@
         <h2>Découvrir le CSS</h2>
     </section>
 
+    <section>
+        <h3>Présentation</h3>
+        <p>Le CSS est un langage informatique permettant de décrire la <strong>mise en forme</strong> des fichiers HTML. Il fait son apparition en <strong>1996</strong>, 3 ans après la création du langage HTML.</p>
+        <p>
+            Il peut être utilisé pour changer
+            la <span style="color: orange;">couleur</span> du texte,
+            sa <span style="font-size: 0.6em;">taille</span>,
+            sa <span style="font-family: 'Comic Sans MS',serif">font</span>,
+            ajouter une <span style="border: 1px solid red;">bordure</span>,
+            gérer les <span style="padding: 1em;">espacements</span>,
+            ajouter des effets <span style="box-shadow: 4px 4px 4px #ccc">d'ombre</span>
+            ou encore une <span style="background-color: #ccc;">couleur de fond</span>.
+        </p>
+        <p>Cependant, la notion la plus complexe et la plus importante du CSS reste sans doute le <strong>positionnement</strong> 😱.</p>
+    </section>
 
+    <section>
+        <h3>Où écrit-on le CSS</h3>
+        <ul>
+            <li>
+                <span>au sein des balises HTML 👎</span>
+                <pre><code class="language-html">&lt;h1 style=&quot;color: red;&quot;&gt;Titre principal&lt;/h1&gt;</code></pre>
+            </li>
+            <li>
+                <span>dans une balise <code class="language-html">&lt;style&gt;&lt;/style&gt;</code> au sein de la balise <code class="language-html">&lt;head&gt;&lt;/head&gt;</code> 👎</span>
+                <pre><code class="language-html">&lt;style&gt;
+    h1 { color: red; }
+&lt;/style&gt;</code></pre>
+            </li>
+            <li>
+                <span>dans une ressource externe : la feuille de style 👍</span>
+                <pre><code class="language-css">h1 { color: red; }</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Pourquoi dans une feuille de style ?</h3>
+        <ul>
+            <li>Cela favorise une meilleure lisibilité du code</li>
+            <li>Chaque langage possède son propre cloisonnement</li>
+            <li>Plus facile à maintenir</li>
+            <li>Possibilité d’héritage</li>
+            <li>Plus facile à débugguer</li>
+            <li>Exportable</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Incorporer une feuille de style</h3>
+        <p>Une feuille de style est un fichier ayant pour extension <code>.css</code>.</p>
+        <p>On utilise une balise link au sein de la balise head pour l’incorporer.</p>
+        <pre><code class="language-html">&lt;link rel=”stylesheet” href=”fichier.css”/&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>Le langage CSS</h3>
+        <p>Le langage CSS est contitué principalement de <strong>sélécteurs</strong> puis d'ensemble <strong>clé / valeur</strong>.</p>
+        <p>Les sélécteurs permettent de sélectionner le ou les éléments sur lesquels appliquer une ou plusieurs propriété :</p>
+        <pre><code class="language-css">h1 {
+    color: red;
+    text-decoration: underline;
+}</code></pre>
+        <p>Le code CSS ci-dessus permet de mettre l'ensemble des titres de niveau 1 en <strong>rouge et soulignés</strong>.</p>
+        <p>Les <strong>accolades</strong> permettent de délimiter les propriétés et chaque propriétés doivent être séparées par un <strong>point virgule</strong>.</p>
+    </section>
+
+    <section>
+        <h3>Normalize</h3>
+        <p>Chaque navigateur interprète les balises HTML avec des valeurs par défaut.</p>
+        <p>Pour établir une norme, nous utiliserons une feuille de style spécifique.</p>
+        <p>C’est le rôle de <a href="https://necolas.github.io/normalize.css/" target="_blank">normalize.css</a></p>
+        <p>Elle contient des déclarations de styles qui viendront surcharger et remplacer les valeurs par défaut de chaque navigateur.</p>
+        <p>De ce fait chaque navigateur aura un rendu très similaire lors de l’interprétation du code CSS.</p>
+    </section>
+
+    <section>
+        <h3>Les sélecteurs</h3>
+        <p>Il existe plusieurs manières de sélectionner des éléments en CSS :</p>
+        <ul>
+            <li>
+                <span>En utilisant les éléments HTML.</span>
+                <pre><code class="language-css">h1 { color: red; }</code></pre>
+            </li>
+            <li>
+                <span>En utilisant l’attribut id (identifiant).</span>
+                <pre><code class="language-css">#titre-principal { color: red; }</code></pre>
+            </li>
+            <li>
+                <span>En utilisant l’attribut class (classe).</span>
+                <pre><code class="language-css">.titre-rouge { color: red; }</code></pre>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Les sélecteurs</h3>
+        <p>En utilisant l'attribut id :</p>
+        <div class="container">
+            <div class="col">
+                <p>Dans le code HTML :</p>
+                <pre><code class="language-html">&lt;p id=&quot;toto&quot;&gt;Mon paragraphe&lt;/p&gt;
+&lt;div id=&quot;tata&quot;&gt;
+	&lt;p&gt;Texte&lt;/p&gt;
+	&lt;p&gt;Texte&lt;/p&gt;
+	&lt;span&gt;Texte&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="col">
+                <p>Dans le code CSS :</p>
+                <pre><code class="language-css">#toto {
+	font-size: 14px
+}
+#tata {
+	background: #F00;
+}
+#tata p {
+	font-size: 24px;
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Les sélecteurs</h3>
+        <p>En utilisant l'attribut class :</p>
+        <div class="container">
+            <div class="col">
+                <p>Dans le code HTML :</p>
+                <pre><code class="language-html">&lt;p id=&quot;toto&quot; class=&quot;titi&quot;&gt;Mon paragraphe&lt;/p&gt;
+&lt;div id=&quot;tata&quot; class=&quot;titi&quot;&gt;
+    &lt;p&gt;Texte&lt;/p&gt;
+    &lt;p&gt;Texte&lt;/p&gt;
+    &lt;span&gt;Texte&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+            </div>
+            <div class="col">
+                <p>Dans le code CSS :</p>
+                <pre><code class="language-css">#toto {
+	font-size: 14px
+}
+#tata {
+	background: #F00;
+}
+#tata p {
+	font-size: 24px;
+}
+.titi {
+	border: 1px solid black;
+}
+</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Les sélecteurs</h3>
+        <p>Certaines sélections sont plus “forte” que d’autres :</p>
+        <p style="padding: 1em; text-align: center;">Attribut id > Attribut class > Element HTML</p>
+    </section>
+
+    <section>
+        <h3>Mise en forme du texte</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Propriété</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color" target="_blank">color</a></td>
+                <td>Permet de définir la couleur du texte</td>
+            </tr>
+            <tr>
+                <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size" target="_blank">font-size</a></td>
+                <td>Permet de définir la taille du texte</td>
+            </tr>
+            <tr>
+                <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family" target="_blank">font-family</a></td>
+                <td>Permet de définir le type de font utilisé</td>
+            </tr>
+            <tr>
+                <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight" target="_blank">font-weight</a></td>
+                <td>Permet de définir la largeur de la font</td>
+            </tr>
+            <tr>
+                <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration" target="_blank">text-decoration</a></td>
+                <td>Permet de définir une décoration sur la font</td>
+            </tr>
+            </tbody>
+        </table>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals" class="info" target="_blank">Autres propriétés</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Les couleurs</h3>
+        <p>En CSS, il est possible d'utilisé plusieurs notations pour définir une couleur :</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Keyword</td>
+                <td>Définition à l'aide d'un <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords" target="_blank">nom de couleur</a></td>
+            </tr>
+            <tr>
+                <td>RGB</td>
+                <td>Définition à l'aide de valeurs Rouge Vert Bleu comprises entre 0 et 255</td>
+            </tr>
+            <tr>
+                <td>RGBA</td>
+                <td>Idem RGB plus couche Alpha</td>
+            </tr>
+            <tr>
+                <td>HSL</td>
+                <td>Définition à l'aide de valeurs Teinte, Saturation et Luminosité</td>
+            </tr>
+            <tr>
+                <td>HSLA</td>
+                <td>Idem HSL plus couche Alpha</td>
+            </tr>
+            </tbody>
+        </table>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" class="info" target="_blank">Autres notations disponibles</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Les unités de mesure</h3>
+        <p>Le CSS permet d'utiliser plusieurs unités de mesure pour la taille de la font et des éléments HTML :</p>
+        <table>
+            <thead>
+            <tr>
+                <th colspan="2">Unité</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td rowspan="2">Absolute</td>
+                <td>px</td>
+                <td>Pixel</td>
+            </tr>
+            <tr>
+                <td>cm</td>
+                <td>Centimètres (utilisé pour l'impression)</td>
+            </tr>
+            <tr>
+                <td rowspan="5">Relative</td>
+                <td>em</td>
+                <td>Relatif à l'élément parent</td>
+            </tr>
+            <tr>
+                <td>rem</td>
+                <td>Relatif à l'élément root <code class="language-html">&lt;html&gt;</code></td>
+            </tr>
+            <tr>
+                <td>vw</td>
+                <td>Relatif à la largeur du viewport (fenêtre)</td>
+            </tr>
+            <tr>
+                <td>vh</td>
+                <td>Relatif à la hauteur du viewport (fenêtre)</td>
+            </tr>
+            <tr>
+                <td>%</td>
+                <td>Relatif à l'élément parent</td>
+            </tr>
+            </tbody>
+        </table>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units" class="info" target="_blank">Autres unités de mesure</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Les fonts</h3>
+        <p>Le CSS permet de choisir la font utilisée en utilisant la propriété <code class="language-css">font-family</code>.</p>
+        <p>Cependant, une <a href="https://www.w3schools.com/cssref/css_websafe_fonts.asp" target="_blank">liste restreinte</a> de fonts est disponible par défaut dans les navigateurs.</p>
+        <p>Il est cependant possible de charger d'autres font en utilisant la balise <code class="language-html">&lt;link&gt;</code> ou bien la notation <code class="language-css">@import</code> :</p>
+        <pre><code class="language-html">&lt;link href=&quot;https://fonts.googleapis.com/css?family=Roboto&display=swap&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
+        <pre><code class="language-css">@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');</code></pre>
+        <p>Puis en faisant appel à cette font dans le CSS :</p>
+        <pre><code class="language-css">font-family: 'Roboto', sans-serif;</code></pre>
+        <footer>
+            <a href="https://fonts.google.com" class="info" target="_blank">Google Font</a>
+        </footer>
+    </section>
 
 </section>
