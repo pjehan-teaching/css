@@ -4,4 +4,174 @@
         <h2>Les sélecteurs</h2>
     </section>
 
+    <section>
+        <h3>Sélectionner plusieurs éléments</h3>
+        <p>Il est possible d'appliquer des règles CSS sur plusieurs éléments en même temps en les séparants par une <code class="language-css">,</code> :</p>
+        <pre><code class="language-css">.titre1, .titre2, .titre3 {
+	color: blue;
+}
+
+.titre1 {
+	font-size: 20px;
+}
+</code></pre>
+        <p>Dans cette exemple, l'ensemble des titres seront bleus et seul le titre1 aura une taille de 20px.</p>
+    </section>
+
+    <section>
+        <h3>Préciser la sélection</h3>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;nav id=&quot;demo1&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;homepage.html&quot; class=&quot;link-home&quot;&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;company.html&quot; class=&quot;link-company&quot;&gt;Notre entreprise&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;contact.html&quot; class=&quot;link-contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                <pre><code class="language-css" id="css-selector-multiple">#demo1 .link-home,
+#demo1 .link-contact {
+    background-color: #ccc;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-selector-multiple">
+                    <nav id="demo1">
+                        <ul>
+                            <li><a href="homepage.html" class="link-home">Accueil</a></li>
+                            <li><a href="company.html" class="link-company">Notre entreprise</a></li>
+                            <li><a href="contact.html" class="link-contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Préciser la sélection</h3>
+        <p>Il existe d'autres opérateurs permettant de préciser la sélection :</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Opérateur</th>
+                <th>Exemple</th>
+                <td>Définition</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>espace</td>
+                <td><code class="language-css">A B</code></td>
+                <td>Sélectionne tous les éléments B <strong>enfants</strong> de A</td>
+            </tr>
+            <tr>
+                <td>&gt;</td>
+                <td><code class="language-css">A > B</code></td>
+                <td>Sélectionne tous les éléments B <strong>enfants directs</strong> de A</td>
+            </tr>
+            <tr>
+                <td>~</td>
+                <td><code class="language-css">A ~ B</code></td>
+                <td>Sélectionne tous les éléments B <strong>suivants</strong> de A (au même niveau)</td>
+            </tr>
+            <tr>
+                <td>+</td>
+                <td><code class="language-css">A + B</code></td>
+                <td>Sélectionne tous les éléments B <strong>suivants immédiatement</strong> de A (au même niveau)</td>
+            </tr>
+            </tbody>
+        </table>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#Combinators" class="info" target="_blank">Autres opérateurs</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Préciser la sélection</h3>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;ul id=&quot;demo2&quot;&gt;
+  &lt;li class=&quot;un&quot;&gt;Un&lt;/li&gt;
+  &lt;li class=&quot;deux&quot;&gt;Deux&lt;/li&gt;
+  &lt;li class=&quot;trois&quot;&gt;Trois&lt;/li&gt;
+  &lt;li class=&quot;quatre&quot;&gt;Quatre&lt;/li&gt;
+  &lt;li class=&quot;cinq&quot;&gt;Cinq&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <pre><code class="language-css" id="css-selector-operators">#demo2 > li {
+    background-color: #ccc;
+}
+#demo2 .deux ~ li {
+    text-decoration: underline;
+}
+#demo2 .deux + li {
+    font-weight: bold;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-selector-operators">
+                    <ul id="demo2">
+                        <li class="un">Un</li>
+                        <li class="deux">Deux</li>
+                        <li class="trois">Trois</li>
+                        <li class="quatre">Quatre</li>
+                        <li class="cinq">Cinq</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Préciser la sélection</h3>
+        <p>Il est possible de préciser la sélection d'un élément en séparant par des espaces pour sélectionner en profondeur dans le code HTML :</p>
+        <pre><code class="language-css">nav ul li { background-color: lightblue; }</code></pre>
+        <p>Ce code sélectionnera uniquement les éléments <code class="language-html">li</code> qui sont contenus dans un élément <code class="language-html">ul</code> eux-mêmes contenus dans un élément <code class="language-html">nav</code></p>
+    </section>
+
+    <section>
+        <h3>Préciser la sélection</h3>
+        <p>Vous pouvez également combiner plusieurs sélecteur sur un même élément :</p>
+        <pre><code class="language-css">h1#titre-home { color: red; }</code></pre>
+        <p>Le code ci-dessus ne sélectionnera que les éléments <code class="language-html">h1</code> ayant pour id <code class="language-html">titre-home</code>.</p>
+        <pre><code class="language-html">&lt;h1&gt;Titre 1&lt;/h1&gt; &lt;!-- Non sélectionné --&gt;
+&lt;h1 id=&quot;titre-home&quot;&gt;Titre 1&lt;/h1&gt; &lt;!-- Sélectionné --&gt;
+&lt;h1 id=&quot;titre-home&quot; class=&quot;titre&quot;&gt;Titre 1&lt;/h1&gt; &lt;!-- Sélectionné --&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>Sélectionner par attribut</h3>
+        <p>La sélection par attribut utilise les caractères <code class="language-css">[]</code> pour sélectionner des éléments en fonction de leurs attributs :</p>
+        <pre><code class="language-css">input[type="text"] { width: 300px }</code></pre>
+    </section>
+
+    <section>
+        <h3>Les pseudo-classes</h3>
+        <p>Il est possible d'appliquer des styles en fonction de l'<strong>état d'un élément</strong>.</p>
+        <p>Pour cela, on utiliser le caractère <code class="language-css">:</code> suivit de l'état de l'élément :</p>
+        <pre><code class="language-css">a:hover { color: red; }</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes#Index_of_standard_pseudo-classes" class="info" target="_blank">Liste des pseudo-classes</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Les pseudo-elements</h3>
+        <p>Les pseudo-elements permettent d'ajouter de la précision dans la sélection d'un élément.</p>
+        <p>Pour cela, on utiliser les caractères <code class="language-css">::</code> suivit de l'état de l'élément :</p>
+        <pre><code class="language-css">p::first-letter { color: red; }</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements#Index_of_standard_pseudo-elements" class="info" target="_blank">Liste des pseudo-elements</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Les pseudo-elements</h3>
+        <p>Les pseudo-elements <code class="language-css">::before</code> et <code class="language-css">::after</code> permettent respectivement d'ajouter un élément avant ou après l'élément sélectionné.</p>
+        <pre><code class="language-css">a[href^=http]::before { content: '🔗' }</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before" class="info" target="_blank">::before documentation</a>
+        </footer>
+    </section>
+
 </section>

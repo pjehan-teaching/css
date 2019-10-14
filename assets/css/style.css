@@ -71,3 +71,8 @@
 .reveal .compatibility-box ul.browser-list > li .support-not {
     color: #FF3939;
 }
+
+.reveal .btn-apply-css {
+    display: block;
+    margin: 1em auto;
+}

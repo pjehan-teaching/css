@@ -70,6 +70,30 @@ setTimeout(() => {
     ;
   }
 
+  const cssDemos = document.querySelectorAll('.css-demo');
+  for (let demo of cssDemos) {
+    const styles = document.getElementById(demo.dataset.csscontainerid).innerText;
+
+    const button = document.createElement('button');
+    button.innerText = 'Appliquer CSS';
+    button.className = 'btn-apply-css';
+    button.addEventListener('click', function() {
+      if (document.getElementById('style-' + demo.dataset.csscontainerid)) {
+        document.getElementById('style-' + demo.dataset.csscontainerid).remove();
+        button.innerText = 'Appliquer CSS';
+      } else {
+        const styleSheet = document.createElement("style");
+        styleSheet.id = 'style-' + demo.dataset.csscontainerid;
+        styleSheet.type = "text/css";
+        styleSheet.innerHTML = styles;
+        document.head.appendChild(styleSheet);
+        button.innerText = 'Retirer CSS';
+      }
+    });
+
+    demo.prepend(button);
+  }
+
   Chart.defaults.global.defaultFontSize = 22;
 
 }, 500);
