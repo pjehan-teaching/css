@@ -76,3 +76,19 @@
     display: block;
     margin: 1em auto;
 }
+
+.reveal .css-demo .square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    border: solid 1px black;
+    color: black;
+}
+
+.reveal .demo-flex-container {
+    height: 300px;
+    background-color: blue;
+}

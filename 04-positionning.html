@@ -4,4 +4,342 @@
         <h2>Le positionnement</h2>
     </section>
 
+    <section>
+        <h3>La propriété position</h3>
+        <p>Par défaut, les éléments HTML suivent un flux de gauche à droite et de haut en bas.</p>
+        <p>Il est cependant possible de modifier cela en changeant la position des éléments :</p>
+        <table style="font-size: 0.8em;">
+            <thead>
+            <tr>
+                <th>Position</th>
+                <th>Définition</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>static</td>
+                <td>L'élément <strong>suit le flux normal</strong> (par défaut).</td>
+            </tr>
+            <tr>
+                <td>absolute</td>
+                <td>L'élément est <strong>retiré du flux normal</strong>. Il est positionné relativement à son élément parent le plus proche.</td>
+            </tr>
+            <tr>
+                <td>fixed</td>
+                <td>L'élément est <strong>retiré du flux normal</strong>. Il est positionné relativement à l'élément parent principal. Il reste toujours visible à l'écran lors du scoll</td>
+            </tr>
+            <tr>
+                <td>sticky</td>
+                <td>L'élément <strong>suit le flux normal</strong>. Il reste toujours visible à l'écran lors du scoll.</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>Les éléments en dehors du flux normal sont positionnés en utilisant les propriétés <code class="language-css">top</code>, <code class="language-css">bottom</code>, <code class="language-css">left</code> et <code class="language-css">right</code></p>
+        <footer>
+            <a href="javascript:" class="warning">Il faut privilégier le flux normal</a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#Examples" class="info" target="_blank">Exemples</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Inline vs Block</h3>
+        <p>Les éléments de type <strong>Inline</strong> se positionnent les <strong>uns à côté</strong> des autres tandis que les éléments de type <strong>Block</strong> on une largeur de 100% et se positionnent les <strong>uns sous les autres</strong>.</p>
+        <p>Il n'est <strong>PAS</strong> possible de définir la largeur ou la hauteur des éléments de type <strong>Inline</strong> :</p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div&gt;Block&lt;/div&gt;
+&lt;span&gt;Inline&lt;/span&gt;</code></pre>
+                <pre><code class="language-css">div, span {
+    background-color: #ccc;
+    height: 50px;
+    width: 150px;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div style="background-color: #ccc; height: 50px; width: 150px;">Block</div>
+                <span style="background-color: #ccc; height: 50px; width: 150px;">Inline</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Inline vs Block</h3>
+        <p>Il est possible de modifier cette propriété en utilisant <code class="language-css">display</code> :</p>
+        <pre><code class="language-css">span { display: block; }</code></pre>
+    </section>
+
+    <section>
+        <h3>Inline-block</h3>
+        <p>Il existe également un affichage <code class="language-css">inline-block</code> qui permet d'afficher des éléments les uns à côté des autres et de pouvoir définir leur dimension.</p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;ul id=&quot;demo3&quot;&gt;
+  &lt;li&gt;Un&lt;/li&gt;
+  &lt;li&gt;Deux&lt;/li&gt;
+  &lt;li&gt;Trois&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                <pre><code class="language-css" id="css-position-inline-block">ul#demo3 li {
+    display: inline-block;
+    background-color: #ccc;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-position-inline-block">
+                    <ul id="demo3">
+                        <li>Un</li>
+                        <li>Deux</li>
+                        <li>Trois</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <a href="https://css-tricks.com/fighting-the-space-between-inline-block-elements/" class="warning" target="_blank">Les espaces sont dûs aux whitespaces</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Float</h3>
+        <p>La propriété <code class="language-css">float</code> permet de faire sortir l'élément du flux et de le rendre "flottant".</p>
+        <p>Cette propriété peut prendre plusieurs valeurs mais généralement, on utilise les valeurs <code class="language-css">left</code> ou <code class="language-css">right</code>.</p>
+        <div class="container">
+            <div class="col">
+                <pre style="max-width: 400px;"><code class="language-html">&lt;div id=&quot;demo4&quot;&gt;
+  &lt;div class=&quot;square&quot;&gt;&lt;/div&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-position-float">#demo4 .square {
+    float: left;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-position-float">
+                    <div id="demo4">
+                        <div class="square" style="width: 50px; height: 50px; background-color: red;"></div>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Float</h3>
+        <p>Float a depuis longtemps été utilisé pour <strong>positionner des éléments côte à côte</strong>.</p>
+        <div style="height: 50px;">
+            <div style="float: left;width: 250px; height: 50px; background-color: red;">float: left</div>
+            <div style="float: left;width: 250px; height: 50px; background-color: green;">float: left</div>
+            <div style="float: left;width: 250px; height: 50px; background-color: blue;">float: left</div>
+        </div>
+        <p>Cependant, cette utilisation a été rendue obsolète avec l'arrivée de <code class="language-css">flex</code>.</p>
+    </section>
+
+    <section>
+        <h3>Flex</h3>
+        <div class="container">
+            <div class="col" style="flex: 2;">
+                <p>Pour répondre aux besoins de construire des pages web responsive et faciliter le positionnement des éléments, la propriété <code class="language-css">flex</code> a été introduite dans CSS3.</p>
+            </div>
+            <div class="col">
+                <div class="compatibility-box" data-category="css" data-subcategory="properties" data-property="flex"></div>
+            </div>
+        </div>
+        <footer>
+            <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="info" target="_blank">Documentation CSS Tricks</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Flex</h3>
+        <p>Flex fonctionne avec un <strong>conteneur</strong> d'éléments qui définira comment les éléments seront positionnés.</p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-flex-1&quot;&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-position-flex">#demo-flex-1 {
+    display: flex;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-position-flex">
+                    <div id="demo-flex-1" class="demo-flex-container">
+                        <div class="square">1</div>
+                        <div class="square">2</div>
+                        <div class="square">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>Par défault, flex va afficher les éléments en ligne.</p>
+    </section>
+
+    <section>
+        <h3>Flex - flex-direction</h3>
+        <p>La propriété <code class="language-css">flex-direction</code> permet de choisir la direction dans laquelle les éléments seront alignés.</p>
+        <p>Les valeurs possibles sont <code class="language-css">row</code> (défaut), <code class="language-css">column</code>, <code class="language-css">row-reverse</code> ou <code class="language-css">column-reverse</code></p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-flex-2&quot;&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-position-flex-direction">#demo-flex-2 {
+    display: flex;
+    flex-direction: column-reverse;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-position-flex-direction">
+                    <div id="demo-flex-2" class="demo-flex-container">
+                        <div class="square">1</div>
+                        <div class="square">2</div>
+                        <div class="square">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Flex - flex-wrap</h3>
+        <p>La propriété <code class="language-css">flex-wrap</code> permet de définir le comportement des éléments sortant du conteneur.</p>
+        <p>Les valeurs possibles sont <code class="language-css">nowrap</code> (défaut), <code class="language-css">wrap</code> ou <code class="language-css">wrap-reverse</code></p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-flex-3&quot;&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-position-flex-wrap">#demo-flex-3 {
+    display: flex;
+    width: 150px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-position-flex-wrap">
+                    <div id="demo-flex-3" class="demo-flex-container">
+                        <div class="square">1</div>
+                        <div class="square">2</div>
+                        <div class="square">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <a href="javascript:" class="info">flex-flow permet de définir flex-direction et flex-wrap</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Flex - justify-content</h3>
+        <p>La propriété <code class="language-css">justify-content</code> permet de gérer l'alignement des éléments par rapport à l'axe principal (définit par <code class="language-css">flex-direction</code>).</p>
+        <p>Les valeurs possibles sont <code class="language-css">flex-start</code> (défaut), <code class="language-css">flex-end</code>, <code class="language-css">center</code>, <code class="language-css">space-between</code>, <code class="language-css">space-around</code> ou <code class="language-css">space-evenly</code></p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-flex-4&quot;&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-position-flex-justify-content">#demo-flex-4 {
+    display: flex;
+    justify-content: space-evenly;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-position-flex-justify-content">
+                    <div id="demo-flex-4" class="demo-flex-container">
+                        <div class="square">1</div>
+                        <div class="square">2</div>
+                        <div class="square">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Flex - align-items</h3>
+        <p>La propriété <code class="language-css">align-items</code> permet de gérer l'alignement des éléments par rapport à l'axe secondaire.</p>
+        <p>Les valeurs possibles sont <code class="language-css">stretch</code> (défaut), <code class="language-css">flex-start</code>, <code class="language-css">flex-end </code>, <code class="language-css">center</code>, <code class="language-css">baseline</code>...</p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-flex-5&quot;&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-position-flex-align-items">#demo-flex-5 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-position-flex-align-items">
+                    <div id="demo-flex-5" class="demo-flex-container">
+                        <div class="square">1</div>
+                        <div class="square">2</div>
+                        <div class="square">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Flex - align-content</h3>
+        <p>La propriété <code class="language-css">align-content</code> permet de gérer l'alignement de façon similaire à <code class="language-css">justify-content</code> mais sur l'axe secondaire.</p>
+        <p>Les valeurs possibles sont <code class="language-css">stretch</code> (défaut), <code class="language-css">flex-start</code>, <code class="language-css">flex-end</code>, <code class="language-css">center</code>, <code class="language-css">space-between</code>, <code class="language-css">space-around</code>, <code class="language-css">space-evenly</code>...</p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-flex-6&quot;&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-position-flex-align-content">#demo-flex-6 {
+    display: flex;
+    width: 150px;
+    flex-flow: row wrap;
+    align-content: center;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-position-flex-align-content">
+                    <div id="demo-flex-6" class="demo-flex-container">
+                        <div class="square">1</div>
+                        <div class="square">2</div>
+                        <div class="square">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Flex - éléments enfants</h3>
+        <p>Il existe également des propriétés pour gérer le positionnement des enfants de manière individuelle :</p>
+        <ul>
+            <li><code class="language-css">order</code> : Permet de changer l'ordre d'un élément enfant</li>
+            <li><code class="language-css">flex-grow</code> : Permet de définir si un élément enfant peut s'agrandir</li>
+            <li><code class="language-css">flex-shrink</code> : Permet de définir si un élément enfant peut rétrécir</li>
+            <li><code class="language-css">flex-basis</code> : Permet de définir la taille par défaut d'un élément enfant</li>
+            <li><code class="language-css">align-self</code> : Permet de changer l'alignement d'un élément enfant</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Flexbox Froggy</h3>
+        <p>Pour vous entraîner à utiliser Flex :</p>
+        <a href="https://flexboxfroggy.com/" target="_blank">https://flexboxfroggy.com</a>
+    </section>
+
 </section>
