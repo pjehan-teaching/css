@@ -1,0 +1,50 @@
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+@import "blockquote";
+@import "compatibility-box";
+@import "directory-structure";
+
+.reveal {
+
+  pre[class*="language-"] {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.6em;
+    padding: 0.5em;
+
+    code {
+      padding: 0;
+    }
+  }
+
+  .keyboard-key {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.1em 0.5em;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
+    background-color: #f7f7f7;
+  }
+
+  .btn-apply-css {
+    display: block;
+    margin: 1em auto;
+  }
+
+  .css-demo .square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    background-color: red;
+    border: solid 1px black;
+    color: black;
+  }
+
+  .demo-flex-container {
+    height: 300px;
+    background-color: blue;
+  }
+
+}
