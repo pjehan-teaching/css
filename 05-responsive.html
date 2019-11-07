@@ -4,4 +4,61 @@
         <h2>Responsive</h2>
     </section>
 
+    <section>
+        <h3>Media Queries</h3>
+        <div class="container">
+            <div class="col" style="flex: 2;">
+                <p>Les media queries permettent d'appliquer des propriétés CSS en fonction de la résolution de l'écran.</p>
+                <p>Elles peuvent aussi être utilisées en fonction du type d'écran (screen, print, tv...)</p>
+            </div>
+            <div class="col">
+                <div class="compatibility-box" data-category="css" data-subcategory="at-rules" data-property="media"></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Viewport</h3>
+        <p>Le viewport est la partie visible d'une page web pour l'internaute. Il peut varier en fonction de l'appareil utilisé (ordinateur, smartphone...).</p>
+        <p>La balise <code class="language-html">&lt;meta&gt;</code> viewport permet d'indiquer au navigateur la façon dont il doit gérer la taille et la mise à l'échelle de la page :</p>
+        <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+        <p><code class="language-html">width=device-width</code> permet d'indiquer que <mark>la largeur de la page web</mark> doit correspondre à la largeur de l'écran.</p>
+        <p><code class="language-html">initial-scale=1.0</code> permet de définir le <mark>niveau de zoom</mark> par défaut lorsque la page web est chargée.</p>
+    </section>
+
+    <section>
+        <h3>Utilisation</h3>
+        <p>Il est possible d'utiliser les media queries pour charger une feuille de style :</p>
+        <pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; media=&quot;screen and (max-width: 720px)&quot; href=&quot;smartphone.css&quot; /&gt;</code></pre>
+        <p>Ou bien directement à l'intérieur d'une feuille de style :</p>
+        <pre><code class="language-css">@media screen and (max-width: 720px) {
+    body {
+        background-color: red;
+    }
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Les breakpoints</h3>
+        <p>Les breakpoints sont des points de rupture à partir desquels une design CSS différent est appliqué.</p>
+        <p>On peut par exemple utiliser les breakpoints suivants :</p>
+        <pre><code class="language-css">// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }</code></pre>
+        <footer>
+            <a href="https://getbootstrap.com/docs/4.3/layout/overview/#responsive-breakpoints" class="info" target="_blank">Boostrap breakpoints</a>
+        </footer>
+    </section>
+
 </section>
