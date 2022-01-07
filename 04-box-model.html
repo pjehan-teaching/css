@@ -114,4 +114,37 @@
         </div>
     </section>
 
+    <section>
+        <h3>Box sizing</h3>
+        <p>
+            Par défaut, dans le modèle de boîte CSS, la hauteur et la largeur d'un élément sont calculé en prenant en compte le <code class="language-css">padding</code> et le <code class="language-css">border</code> de l'élément.
+            Cela signifie que si un élément à une largeur de 100% mais qu'il a une bordure, sa taille finale sera supérieure à 100%.
+        </p>
+        <p>
+            La propriété <code class="language-css">box-sizing</code> permet d'éviter ce problème en utilisant la valeur <code class="language-css">border-box</code> :
+        </p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-box-sizing&quot;  style=&quot;background-color: red; padding: 10px 0;&quot;&gt;
+    &lt;div class=&quot;children&quot; style=&quot;background-color: blue; width: 100%;
+                                height: 50px; border: 5px solid green;&quot;&gt;
+        Enfant
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-box-sizing">#demo-box-sizing .children {
+    box-sizing: border-box;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-box-sizing">
+                    <div class="children" id="demo-box-sizing"  style="background-color: red; padding: 10px 0;">
+                        <div class="children" style="background-color: blue; width: 100%; height: 50px; border: 5px solid green;">
+                            Enfant
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </section>
