@@ -1,6 +1,7 @@
 import Prism from 'prismjs';
 import Chart from 'chart.js';
 import './css/style.scss';
+require.context('./images', false, /\.(png|jpe?g|svg|gif)$/); // Import all images
 
 document.getElementById('revealexpress').addEventListener('loaded', function(event) {
 

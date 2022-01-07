@@ -35,6 +35,16 @@ module.exports = {
                         publicPath: 'fonts/'
                     }
                 }]
+            },
+            {
+                test: /\.(png|jp(e*)g|svg|gif)$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 8000,
+                        name: '../images/[name].[ext]'
+                    }
+                }]
             }
         ]
     }

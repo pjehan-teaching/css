@@ -1,0 +1,22 @@
+.reveal {
+
+  section {
+    figure {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      align-items: center;
+      background-color: #657b83;
+
+      img {
+        margin: 0;
+      }
+
+      figcaption {
+        color: white;
+      }
+    }
+  }
+
+}

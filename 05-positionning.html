@@ -42,66 +42,9 @@
     </section>
 
     <section>
-        <h3>Inline vs Block</h3>
-        <p>Les éléments de type <strong>Inline</strong> se positionnent les <strong>uns à côté</strong> des autres tandis que les éléments de type <strong>Block</strong> on une largeur de 100% et se positionnent les <strong>uns sous les autres</strong>.</p>
-        <p>Il n'est <strong>PAS</strong> possible de définir la largeur ou la hauteur des éléments de type <strong>Inline</strong> :</p>
-        <div class="container">
-            <div class="col">
-                <pre><code class="language-html">&lt;div&gt;Block&lt;/div&gt;
-&lt;span&gt;Inline&lt;/span&gt;</code></pre>
-                <pre><code class="language-css">div, span {
-    background-color: #ccc;
-    height: 50px;
-    width: 150px;
-}</code></pre>
-            </div>
-            <div class="col">
-                <div style="background-color: #ccc; height: 50px; width: 150px;">Block</div>
-                <span style="background-color: #ccc; height: 50px; width: 150px;">Inline</span>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h3>Inline vs Block</h3>
-        <p>Il est possible de modifier cette propriété en utilisant <code class="language-css">display</code> :</p>
-        <pre><code class="language-css">span { display: block; }</code></pre>
-    </section>
-
-    <section>
-        <h3>Inline-block</h3>
-        <p>Il existe également un affichage <code class="language-css">inline-block</code> qui permet d'afficher des éléments les uns à côté des autres et de pouvoir définir leur dimension.</p>
-        <div class="container">
-            <div class="col">
-                <pre><code class="language-html">&lt;ul id=&quot;demo3&quot;&gt;
-  &lt;li&gt;Un&lt;/li&gt;
-  &lt;li&gt;Deux&lt;/li&gt;
-  &lt;li&gt;Trois&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-                <pre><code class="language-css" id="css-position-inline-block">ul#demo3 li {
-    display: inline-block;
-    background-color: #ccc;
-}</code></pre>
-            </div>
-            <div class="col">
-                <div class="css-demo" data-csscontainerid="css-position-inline-block">
-                    <ul id="demo3">
-                        <li>Un</li>
-                        <li>Deux</li>
-                        <li>Trois</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <footer>
-            <a href="https://css-tricks.com/fighting-the-space-between-inline-block-elements/" class="warning" target="_blank">Les espaces sont dûs aux whitespaces</a>
-        </footer>
-    </section>
-
-    <section>
         <h3>Float</h3>
         <p>La propriété <code class="language-css">float</code> permet de faire sortir l'élément du flux et de le rendre "flottant".</p>
-        <p>Cette propriété peut prendre plusieurs valeurs mais généralement, on utilise les valeurs <code class="language-css">left</code> ou <code class="language-css">right</code>.</p>
+        <p>Cette propriété peut prendre plusieurs valeurs, mais généralement, on utilise les valeurs <code class="language-css">left</code> ou <code class="language-css">right</code>.</p>
         <div class="container">
             <div class="col">
                 <pre style="max-width: 400px;"><code class="language-html">&lt;div id=&quot;demo4&quot;&gt;
