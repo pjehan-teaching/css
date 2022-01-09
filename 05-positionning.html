@@ -285,4 +285,137 @@
         <a href="https://flexboxfroggy.com/" target="_blank">https://flexboxfroggy.com</a>
     </section>
 
+    <section>
+        <h3>Grid</h3>
+        <div class="container">
+            <div class="col" style="flex: 2;">
+                <p>Contrairement à flexbox qui fonctionne sur 1 dimension (<code class="language-css">row</code> ou <code class="language-css">column</code>), grid permet d'organiser des éléments sur 2 dimensions (<code class="language-css">row</code> ET <code class="language-css">column</code>).</p>
+            </div>
+            <div class="col">
+                <div class="compatibility-box" data-category="css" data-subcategory="properties" data-property="grid"></div>
+            </div>
+        </div>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Relationship_of_Grid_Layout" class="info" target="_blank">Documentation MDN</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Grid</h3>
+        <p>Pour créer une grille sur 3 colonnes ayant toute la même taille, il suffit d'utiliser la propriété <code class="language-css">grid-template-columns</code> :</p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-grid-1&quot;&gt;
+    &lt;div&gt;1&lt;/div&gt;
+    &lt;div&gt;2&lt;/div&gt;
+    &lt;div&gt;3&lt;/div&gt;
+    &lt;div&gt;4&lt;/div&gt;
+    &lt;div&gt;5&lt;/div&gt;
+    &lt;div&gt;6&lt;/div&gt;
+    &lt;div&gt;7&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-grid-1">#demo-grid-1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-grid-1">
+                    <div id="demo-grid-1">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                        <div>7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p><code class="language-css">1fr</code> représente 1 fraction et la fonction <code class="language-css">repeat()</code> permet de répéter dans notre cas 3 colonnes d'une fraction.</p>
+    </section>
+
+    <section>
+        <h3>Gap</h3>
+        <p>Les propriétés <code class="language-css">gap</code>, <code class="language-css">row-gap</code> et <code class="language-css">column-gap</code> permettent de gérer les espacements entre les différents éléments de la grille :</p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-grid-2&quot;&gt;
+    &lt;div&gt;1&lt;/div&gt;
+    &lt;div&gt;2&lt;/div&gt;
+    ...
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-grid-2">#demo-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1em;
+    column-gap: 2em;
+}
+#demo-grid-2 > * { background-color: #ccc; }</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-grid-2">
+                    <div id="demo-grid-2">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                        <div>7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <a href="#" class="info">Ces propriétés sont également compatibles avec Flex !</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Auto Flow</h3>
+        <p>
+            Par défaut, les cases d'une grid sont remplie ligne par ligne.
+            La propriété <code class="language-css">grid-auto-flow</code> permet de modifier ce comportement :
+        </p>
+        <div class="container">
+            <div class="col">
+                <pre><code class="language-html">&lt;div id=&quot;demo-grid-3&quot;&gt;
+    &lt;div&gt;1&lt;/div&gt;
+    &lt;div&gt;2&lt;/div&gt;
+    ...
+&lt;/div&gt;</code></pre>
+                <pre><code class="language-css" id="css-grid-3">#demo-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 50px 1fr 2fr;
+    grid-auto-flow: column;
+    row-gap: 1em;
+    column-gap: 2em;
+}
+#demo-grid-3 > * { background-color: #ccc; }</code></pre>
+            </div>
+            <div class="col">
+                <div class="css-demo" data-csscontainerid="css-grid-3">
+                    <div id="demo-grid-3">
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                        <div>7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Grid Garden</h3>
+        <p>Pour vous entraîner à utiliser Grid :</p>
+        <a href="https://cssgridgarden.com" target="_blank">https://cssgridgarden.com</a>
+    </section>
+
 </section>
