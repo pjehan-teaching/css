@@ -1,0 +1,434 @@
+<section id="sass">
+
+    <section>
+        <h2>SASS</h2>
+    </section>
+
+    <section>
+        <h3>Sommaire</h3>
+        <ol>
+            <li><a href="#/sass-webpack">Webpack</a></li>
+            <li><a href="#/sass-sass">SASS</a></li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Préprocesseur</h3>
+        <p>
+            SASS est un préprocesseur permettant d'écrire du code <mark>CSS plus évolué</mark> tout en assurant une
+            <mark>compatibilité</mark> avec l'ensemble des navigateurs web.
+        </p>
+        <p>
+            Le code SASS doit être <mark>compilé</mark> pour obtenir le code CSS correspondant.
+        </p>
+        <div class="container">
+            <div class="col">
+                <img src="assets/images/sass.png" alt="SASS">
+            </div>
+            <div class="col">
+                <img src="assets/images/less.png" alt="LESS">
+            </div>
+        </div>
+        <p>LESS est une alternative à SASS mais l'écosystème de SASS est aujourd'hui plus important.</p>
+    </section>
+
+    <section>
+        <h3>Compilation</h3>
+        <p>Pour compiler le code SASS en CSS, nous pouvons utiliser un package NPM :</p>
+        <pre><code class="language-shell">npm install -g sass</code></pre>
+        <p>Le code SASS pourra ensuite être compilé avec la commande suivante :</p>
+        <pre><code class="language-shell">sass --watch input.scss output.css</code></pre>
+    </section>
+
+    <section id="sass-webpack">
+        <h3>Compilation - Webpack</h3>
+        <p>
+            La méthode précédente permet de compiler le code SASS mais n'est pas idéale, car il faudra se souvenir de la
+            commande à exécuter à chaque fois que l'on souhaitera travailler sur notre projet.
+        </p>
+        <p>
+            Une solution alternative peut être d'utiliser le "module bundler" <mark>Webpack</mark>.
+        </p>
+        <p>
+            Il s'agit d'une application permettant de lancer plusieurs compilations pour du code JavaScript, SASS,
+            des images...
+        </p>
+        <img src="assets/images/webpack.png" alt="Webpack">
+    </section>
+
+    <section>
+        <h3>Compilation - Webpack</h3>
+        <p>Pour installer Webpack au sein d'un projet, il faut dans un premier temps exécuter la commande suivante :</p>
+        <pre><code class="language-shell">npm install --save-dev webpack webpack-cli</code></pre>
+        <p>Ensuite, nous allons modifier le fichier <code>package.json</code> pour ajouter les lignes suivantes :</p>
+        <pre><code class="language-json">"scripts": {
+    "build": "node_modules/.bin/webpack --mode=production",
+    "watch": "node_modules/.bin/webpack --mode=development --watch"
+}</code></pre>
+        <p>Enfin, nous pourrons maintenant démarrer la compilation des assets en utilisant la commande :</p>
+        <pre><code class="language-shell">npm run watch</code></pre>
+        <footer>
+            <a href="https://webpack.js.org/guides/installation/" target="_blank" class="info">Installation de Webpack</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Compilation - Webpack</h3>
+        <p>
+            A présent, nous allons créer le fichier de configuration de Webpack <code>webpack.config.js</code> que nous
+            positionnerons à la racine de notre projet.
+        </p>
+        <p>
+            Nous allons ensuite définir les points d'entrée et de sortie pour la compilation :
+        </p>
+        <pre><code class="language-js">const path = require('path');
+
+module.exports = {
+    entry: './src/js/script.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/dist/',
+        filename: 'app.js',
+    },
+};</code></pre>
+    </section>
+
+    <section>
+        <h3>Compilation - Webpack</h3>
+        <p>A présent, nous allons utiliser le loader <code>sass-loader</code> pour gérer la compilation de notre code SASS :</p>
+        <pre><code class="language-shell">npm install style-loader css-loader sass-loader sass --save-dev</code></pre>
+        <p>Nous allons ensuite importer le code SASS depuis notre fichier JS définit comme point d'entrée (<code>script.js</code>) :</p>
+        <pre><code class="language-js">import "./style.scss";</code></pre>
+        <p>Enfin, nous allons faire appel aux différents loaders depuis le fichier de config <code>webpack.config.js</code> :</p>
+        <pre><code class="language-js">module.exports = {
+    module: {
+        rules: [
+            { test: /\.s[ac]ss$/i, use: ['style-loader', 'css-loader', 'sass-loader'] },
+            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+        ],
+    },
+};</code></pre>
+        <footer>
+            <a href="https://webpack.js.org/loaders/sass-loader" target="_blank" class="info">SASS Loader</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Compilation - Bonus : Live Reload</h3>
+        <p>
+            Webpack dispose également d'un serveur de développement qui intègre également un système de rafraîchissement
+            instantané (live reload).
+        </p>
+        <pre><code class="language-shell">npm install webpack-dev-server --save-dev</code></pre>
+        <pre><code class="language-js">// webpack.config.js
+module.exports = {
+    devServer: {
+        static: {
+            directory: path.join(__dirname, ''),
+        },
+    }
+};</code></pre>
+        <pre><code class="language-json">"scripts": {
+    "build": "node_modules/.bin/webpack --mode=production",
+    "watch": "node_modules/.bin/webpack serve --open --mode=development"
+},</code></pre>
+        <footer>
+            <a href="https://webpack.js.org/configuration/dev-server/" target="_blank" class="info">Webpack DevServer</a>
+        </footer>
+    </section>
+
+    <section id="sass-sass">
+        <h3>SASS / SCSS</h3>
+        <p>Il existe deux extensions possibles pour écrire du code avec le pré-processeur SASS : .sass et .scss</p>
+        <p>Le code SCSS est très proche du CSS tandis que le code SASS :</p>
+        <ul>
+            <li>Utilise l'indentation à la place des accolades.</li>
+            <li>Utilise le retour à la ligne à la place des points virgule.</li>
+        </ul>
+        <div class="container">
+            <div class="col">
+                <h4>SCSS</h4>
+                <pre><code class="language-scss">h1 {
+    background-color: #ccc;
+    color: white;
+}</code></pre>
+            </div>
+            <div class="col">
+                <h4>SASS</h4>
+                <pre><code class="language-sass">h1
+    background-color: #ccc
+    color: white
+</code></pre>
+            </div>
+        </div>
+        <p>
+            Si le code <mark>SASS est plus concis</mark>, il ne permet pas de facilement copier/coller du code CSS.
+            C'est pour cette raison que le code <mark>SCSS est le plus souvent utilisé</mark>.
+        </p>
+        <footer>
+            <a href="https://sass-lang.com/guide" target="_blank" class="info">SASS Basics</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>SCSS - Variables</h3>
+        <p>
+            Si les dernières versions de CSS permettent de déclarer des variables, le compilateur SASS permet de les
+            utiliser depuis sa création et est plus simple à écrire :
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>CSS</h4>
+                <pre><code class="language-css">:root {
+    --color-primary: blue;
+    --color-secondary: red;
+}
+
+.btn {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+}</code></pre>
+            </div>
+            <div class="col">
+                <h4>SCSS</h4>
+                <pre><code class="language-scss">$color-primary: blue;
+$color-secondary: red;
+
+.btn {
+    background-color: $color-primary;
+    color: $color-secondary;
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>SCSS - Imbrications</h3>
+        <p>
+            Une autre fonctionnalité très intéressante du SCSS est la possibilité d'imbriquer les sélecteurs CSS les
+            uns dans les autres :
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>SCSS</h4>
+                <pre><code class="language-scss">.card {
+    header {
+        background-color: white;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    footer {
+        background-color: #ccc;
+    }
+}</code></pre>
+            </div>
+            <div class="col" style="align-self: center;">➡️</div>
+            <div class="col">
+                <h4>CSS</h4>
+                <pre><code class="language-css">.card header {
+    background-color: white;
+}
+
+.card header img {
+    width: 100%;
+}
+
+.card footer {
+    background-color: #ccc;
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>SCSS - Imbrications</h3>
+        <p>
+            Il est également possible d'utiliser le caractère <code>&</code> pour sélectionner l'élément parent :
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>SCSS</h4>
+                <pre><code class="language-scss">.card {
+    &:hover {
+        box-shadow: gray 0 8px 24px;
+    }
+
+    &.card-dark {
+        background-color: black;
+        color: white;
+    }
+}</code></pre>
+            </div>
+            <div class="col" style="align-self: center;">➡️</div>
+            <div class="col">
+                <h4>CSS</h4>
+                <pre><code class="language-css">.card:hover {
+    box-shadow: gray 0 8px 24px;
+}
+
+.card.card-black {
+    background-color: black;
+    color: white;
+}</code></pre>
+            </div>
+        </div>
+        <footer>
+            <a href="https://sass-lang.com/documentation/style-rules/parent-selector" target="_blank" class="info">Parent Selector</a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>SCSS - Imbrications</h3>
+        <p>
+            Le caractère <code>&</code> peut également être utilisé pour mettre en place la méthodologie
+            <a href="http://getbem.com" target="_blank">BEM</a> :
+        </p>
+        <div class="container">
+            <div class="col">
+                <h4>SCSS</h4>
+                <pre><code class="language-scss">.card {
+    &--dark {
+        background-color: black;
+        color: white;
+    }
+
+    &__title {
+        font-size: 1.5rem;
+    }
+}</code></pre>
+            </div>
+            <div class="col" style="align-self: center;">➡️</div>
+            <div class="col">
+                <h4>CSS</h4>
+                <pre><code class="language-css">.card--dark {
+    background-color: black;
+    color: white;
+}
+
+.card__title {
+        font-size: 1.5rem;
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>SCSS - Découpler son code</h3>
+        <p>SASS permet de découper son code en plusieurs fichiers.</p>
+        <p>
+            Pour cela, il est possible de nommer ses fichiers en les <mark>préfixants d'un underscore</mark>
+            (par exemple <code>_variables.scss</code>) pour indiquer à SASS de ne pas générer de fichier CSS et que ces
+            fichiers seront importés.
+        </p>
+        <p>
+            Historiquement, l'instruction <code class="language-scss">@import</code> est utilisée pour importer un
+            fichier SCSS.
+            Cependant, la <a href="https://sass-lang.com/documentation/at-rules/import" target="_blank">documentation</a>
+            nous informe que cette instruction est dépréciée et devrait disparaître à l'avenir.
+        </p>
+        <p>
+            Il faut donc utiliser l'instruction <code class="language-scss">@use</code> à la place.
+        </p>
+    </section>
+
+    <section>
+        <h3>SCSS - Découpler son code</h3>
+        <p>
+            L'instruction <code class="language-scss">@use</code> permet d'importer un autre fichier et utilise un
+            système de <mark>namespace</mark> permettant d'éviter les conflits entre les noms de variables, mixins...
+        </p>
+        <div class="container">
+            <div class="col">
+                <code>_variables.scss</code>
+                <pre><code class="language-scss">$color-primary: blue;
+$color-secondary: red;</code></pre>
+            </div>
+            <div class="col">
+                <code>style.scss</code>
+                <pre><code class="language-scss">@use 'variables';
+
+.btn {
+    background-color: variables.$color-primary;
+    color: variables.$color-secondary;
+}</code></pre>
+            </div>
+        </div>
+        <p>
+            On remarquera que dans l'instruction <code class="language-scss">@use</code>, le underscore et l'extension
+            du nom de fichier sont optionnels.
+        </p>
+    </section>
+
+    <section>
+        <h3>SCSS - Mixins</h3>
+        <p>
+            Les mixins sont des <mark>fonctions</mark> permettant de réutiliser un ensemble de propriétés CSS.
+            Il est également possible de passer des <mark>paramètres</mark> aux mixins pour plus de flexibilités.
+        </p>
+        <pre style="max-height: 400px;"><code class="language-scss">@use "../variables/colors";
+
+@mixin button($color: colors.$primary) {
+	padding: 0.5rem 1rem;
+	text-transform: uppercase;
+	color: white;
+	background: $color;
+	border-color: $color;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 3px;
+	box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.11);
+	transition: background-color 500ms, color 500ms;
+
+	&:hover {
+		color: $color;
+		background-color: white;
+		border-color: $color;
+		text-decoration: none;
+	}
+}
+
+@mixin button-outlined($color: colors.$primary) {
+	@include button($color);
+
+	color: $color;
+	background: transparent;
+	border-color: $color;
+
+	&:hover {
+		color: white;
+		background-color: $color;
+		border-color: $color;
+	}
+}
+
+.btn {
+	&.btn-primary {
+		@include button;
+
+		&.btn-outlined {
+			@include button-outlined;
+		}
+	}
+
+	&.btn-secondary {
+		@include button(colors.$secondary);
+
+		&.btn-outlined {
+			@include button-outlined(colors.$secondary);
+		}
+	}
+
+	&.btn-dark {
+		@include button(colors.$dark);
+
+		&.btn-outlined {
+			@include button-outlined(colors.$dark);
+		}
+	}
+}</code></pre>
+    </section>
+
+</section>
