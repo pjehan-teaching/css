@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "node_modules/.bin/webpack --mode=production",
-    "watch": "node_modules/.bin/webpack --mode=development --watch=true"
+    "watch": "node_modules/.bin/webpack --mode=development --watch"
   },
   "dependencies": {
     "chart.js": "^2.9.2",
@@ -17,13 +17,13 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-prismjs": "^1.1.1",
     "babel-preset-env": "^1.7.0",
-    "css-loader": "^3.2.0",
-    "file-loader": "^4.2.0",
-    "node-sass": "^6.0.1",
+    "css-loader": "^5.2.7",
+    "file-loader": "^6.2.0",
     "prismjs": "^1.17.1",
+    "sass": "^1.48.0",
     "sass-loader": "^10.0.0",
-    "style-loader": "^1.0.0",
+    "style-loader": "^2.0.0",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^4.9.1"
   }
 }
