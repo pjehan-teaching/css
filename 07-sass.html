@@ -7,7 +7,7 @@
     <section>
         <h3>Sommaire</h3>
         <ol>
-            <li><a href="#/sass-webpack">Webpack</a></li>
+            <li><a href="#/sass-vite">Vite</a></li>
             <li><a href="#/sass-sass">SASS</a></li>
         </ol>
     </section>
@@ -40,101 +40,71 @@
         <pre><code class="language-shell">sass --watch input.scss output.css</code></pre>
     </section>
 
-    <section id="sass-webpack">
-        <h3>Compilation - Webpack</h3>
-        <p>
-            La méthode précédente permet de compiler le code SASS mais n'est pas idéale, car il faudra se souvenir de la
-            commande à exécuter à chaque fois que l'on souhaitera travailler sur notre projet.
-        </p>
-        <p>
-            Une solution alternative peut être d'utiliser le "module bundler" <mark>Webpack</mark>.
-        </p>
-        <p>
-            Il s'agit d'une application permettant de lancer plusieurs compilations pour du code JavaScript, SASS,
-            des images...
-        </p>
-        <img src="assets/images/webpack.png" alt="Webpack">
+    <section id="sass-vite">
+        <h3>Compilation - Vite</h3>
+        <div class="container">
+            <div class="col" style="flex-grow: 2;">
+                <p>
+                    La méthode précédente permet de compiler le code SASS mais n'est pas idéale, car il faudra se souvenir de la
+                    commande à exécuter à chaque fois que l'on souhaitera travailler sur notre projet.
+                </p>
+                <p>
+                    Une solution alternative peut être d'utiliser le "module bundler" <mark>Rollup</mark>.
+                </p>
+                <p>
+                    Rollup est intégré automatiquement avec <mark>Vite</mark>, un serveur de développement local.
+                </p>
+            </div>
+            <div class="col">
+                <img src="assets/images/vite.png" alt="Vite">
+            </div>
+        </div>
     </section>
 
     <section>
-        <h3>Compilation - Webpack</h3>
-        <p>Pour installer Webpack au sein d'un projet, il faut dans un premier temps exécuter la commande suivante :</p>
-        <pre><code class="language-shell">npm install --save-dev webpack webpack-cli</code></pre>
-        <p>Ensuite, nous allons modifier le fichier <code>package.json</code> pour ajouter les lignes suivantes :</p>
-        <pre><code class="language-json">"scripts": {
-    "build": "webpack --mode=production",
-    "watch": "webpack --mode=development --watch"
+        <h3>Compilation - Vite</h3>
+        <p>Pour installer Vite au sein d'un projet, il faut dans un premier temps exécuter la commande suivante pour générer un fichier <code>package.json</code> :</p>
+        <pre><code class="language-shell">npm init -y</code></pre>
+        <p>Nous allons ensuite installer les dépendances NPM :</p>
+        <pre><code class="language-shell">npm i --save-dev vite sass</code></pre>
+    </section>
+
+    <section>
+        <h3>Compilation - Vite</h3>
+        <p>Nous allons maintenant créer les différents fichiers et dossiers nécessaires :</p>
+        <pre><code class="language-js">mkdir {src,src/js,src/scss}
+touch src/index.html src/js/script.js src/scss/styles.scss vite.config.js</code></pre>
+        <p>Puis, nous allons appeler le fichier <code>script.js</code> depuis le fichier <code>index.html</code> :</p>
+        <pre><code class="language-html">&lt;script type="module" src="js/script.js" defer&gt;&lt;/script&gt;</code></pre>
+    </section>
+
+    <section>
+        <h3>Compilation - Vite</h3>
+        <p>Nous allons à présent configurer Vite en modifiant le fichier <code>vite.config.js</code> :</p>
+        <pre><code class="language-js">const path = require('path')
+
+export default {
+  root: path.resolve(__dirname, 'src'),
+  server: {
+    port: 8080,
+    hot: true
+  }
 }</code></pre>
-        <p>Enfin, nous pourrons maintenant démarrer la compilation des assets en utilisant la commande :</p>
-        <pre><code class="language-shell">npm run watch</code></pre>
-        <footer>
-            <a href="https://webpack.js.org/guides/installation/" target="_blank" class="info">Installation de Webpack</a>
-        </footer>
     </section>
 
     <section>
-        <h3>Compilation - Webpack</h3>
-        <p>
-            A présent, nous allons créer le fichier de configuration de Webpack <code>webpack.config.js</code> que nous
-            positionnerons à la racine de notre projet.
-        </p>
-        <p>
-            Nous allons ensuite définir les points d'entrée et de sortie pour la compilation :
-        </p>
-        <pre><code class="language-js">const path = require('path');
-
-module.exports = {
-    entry: './src/js/script.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        publicPath: '/dist/',
-        filename: 'app.js',
-    },
-};</code></pre>
-    </section>
-
-    <section>
-        <h3>Compilation - Webpack</h3>
-        <p>A présent, nous allons utiliser le loader <code>sass-loader</code> pour gérer la compilation de notre code SASS :</p>
-        <pre><code class="language-shell">npm install style-loader css-loader sass-loader sass --save-dev</code></pre>
-        <p>Nous allons ensuite importer le code SASS depuis notre fichier JS définit comme point d'entrée (<code>script.js</code>) :</p>
-        <pre><code class="language-js">import "./style.scss";</code></pre>
-        <p>Enfin, nous allons faire appel aux différents loaders depuis le fichier de config <code>webpack.config.js</code> :</p>
-        <pre><code class="language-js">module.exports = {
-    module: {
-        rules: [
-            { test: /\.s[ac]ss$/i, use: ['style-loader', 'css-loader', 'sass-loader'] },
-            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-        ],
-    },
-};</code></pre>
-        <footer>
-            <a href="https://webpack.js.org/loaders/sass-loader" target="_blank" class="info">SASS Loader</a>
-        </footer>
-    </section>
-
-    <section>
-        <h3>Compilation - Bonus : Live Reload</h3>
-        <p>
-            Webpack dispose également d'un serveur de développement qui intègre également un système de rafraîchissement
-            instantané (live reload).
-        </p>
-        <pre><code class="language-shell">npm install webpack-dev-server --save-dev</code></pre>
-        <pre><code class="language-js">// webpack.config.js
-module.exports = {
-    devServer: {
-        static: {
-            directory: path.join(__dirname, ''),
-        },
-    }
-};</code></pre>
-        <pre><code class="language-json">"scripts": {
-    "build": "webpack --mode=production",
-    "watch": "webpack serve --open --mode=development"
-},</code></pre>
-        <footer>
-            <a href="https://webpack.js.org/configuration/dev-server/" target="_blank" class="info">Webpack DevServer</a>
-        </footer>
+        <h3>Compilation - Vite</h3>
+        <p>Enfin, nous allons ajouter la commande vite dans le fichier <code>package.json</code> pour démarrer le serveur local et la compilation avec Vite :</p>
+        <pre><code class="language-json">{
+  // ...
+  "scripts": {
+    "start": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  // ...
+}</code></pre>
+        <p>Nous pouvons maintenant démarrer le serveur avec la commande suivante :</p>
+        <pre><code class="language-shell">npm start</code></pre>
     </section>
 
     <section id="sass-sass">
