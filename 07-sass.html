@@ -62,8 +62,8 @@
         <pre><code class="language-shell">npm install --save-dev webpack webpack-cli</code></pre>
         <p>Ensuite, nous allons modifier le fichier <code>package.json</code> pour ajouter les lignes suivantes :</p>
         <pre><code class="language-json">"scripts": {
-    "build": "node_modules/.bin/webpack --mode=production",
-    "watch": "node_modules/.bin/webpack --mode=development --watch"
+    "build": "webpack --mode=production",
+    "watch": "webpack --mode=development --watch"
 }</code></pre>
         <p>Enfin, nous pourrons maintenant démarrer la compilation des assets en utilisant la commande :</p>
         <pre><code class="language-shell">npm run watch</code></pre>
