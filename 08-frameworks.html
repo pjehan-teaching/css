@@ -47,11 +47,24 @@ color: white;</code></pre>
     <section>
         <h3>Tailwind</h3>
         <p>Tailwind est un autre framework CSS plus récent et ayant un fonctionnement très différent de Bootstrap.</p>
-        <p>Il dispose de très nombreuses classes permettant de <mark>customiser de manière très précise</mark> une interface.</p>
+        <p>
+            Il dispose de très nombreuses classes, car il utilise une méthode appelée <strong>Atomic CSS</strong>
+            (l'équivalent des classes utilitaires de Bootstrap) qui consiste à appliquer une seule propriété à la fois
+            pour chaque classe (par exemple <code class="language-css">.text-center</code> pour centrer un texte).
+        </p>
         <p>Ce framework est plus particulièrement adapté pour l'<mark>utilisation avec un framework</mark> JS (React, Vue...).</p>
         <footer>
             <a href="https://tailwindcss.com/" target="_blank" class="info">tailwindcss.com</a>
         </footer>
+    </section>
+
+    <section>
+        <h3>UnoCSS</h3>
+        <p>UnoCSS est (encore) un autre framework CSS qui se veut <mark>plus léger</mark> que les deux précédents.</p>
+        <p>
+            Il est plus performant et plus flexible que Tailwind et permet de générer des classes CSS à la volée
+            en se basant sur différents frameworks (Bootstrap, Tailwind...).
+        </p>
     </section>
 
 </section>
