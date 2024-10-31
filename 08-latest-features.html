@@ -1,0 +1,146 @@
+<section id="latest-features">
+
+    <section>
+        <h2>Nouveautés</h2>
+        <ol>
+            <li>
+                <a href="#/variables">Variables</a>
+            </li>
+            <li>
+                <a href="#/nesting">Imbrication</a>
+            </li>
+            <li>
+                <a href="#/smooth-scroll">Défilement fluide</a>
+            </li>
+            <li>
+                <a href="#/interpolate-size">Interpolation de taille</a>
+            </li>
+        </ol>
+    </section>
+
+    <section id="variables">
+        <h3>Variables (custom properties)</h3>
+        <p>Depuis 2016, il est possible d'utiliser des variables en CSS :</p>
+        <pre><code class="language-css">:root {
+    --main-color: #06c;
+}
+
+a {
+    color: var(--main-color);
+}</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank" class="info">
+                En savoir plus
+            </a>
+        </footer>
+    </section>
+
+    <section>
+        <h3>Variables (custom properties)</h3>
+        <p>
+            Il est également possible de déclarer une variable avec <code class="language-css">@property</code>
+            pour indiquer le type de valeur attendue :
+        </p>
+        <pre><code class="language-css">@property --main-color {
+    syntax: '&lt;color&gt;';
+    inherits: false;
+    initial-value: #06c;
+}</code></pre>
+    </section>
+
+    <section>
+        <h3>Variables (custom properties)</h3>
+        <p>
+            Il est également possible de surcharger une variable dans un sélecteur plus spécifique :
+        </p>
+        <pre><code class="language-css">:root {
+    --main-color: lightgray;
+}
+
+body.dark {
+    --main-color: darkgray;
+}</code></pre>
+    </section>
+
+    <section id="nesting">
+        <h3>Imbrication</h3>
+        <p>Depuis 2023, il est possible d'utiliser l'imbrication dans le code CSS comme on peut le faire en SASS :</p>
+        <pre><code class="language-css">nav {
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+}</code></pre>
+        <p>
+            Il est également possible d'utiliser le symbole <code class="language-css">&amp;</code> pour cibler un élément parent :
+        </p>
+        <pre><code class="language-css">a {
+    color: blue;
+
+    &:hover {
+        color: red;
+    }
+}</code></pre>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting" target="_blank" class="info">
+                En savoir plus
+            </a>
+        </footer>
+    </section>
+
+    <section id="smooth-scroll">
+        <h3>Défilement fluide</h3>
+        <div class="container">
+            <div class="col" style="flex: 2">
+                <p>
+                    Depuis 2017, il est possible d'ajouter un défilement fluide sur une page web (particulièrement
+                    utile pour les ancres) :
+                </p>
+                <pre><code class="language-css">html {
+    scroll-behavior: smooth;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="compatibility-box" data-category="css" data-subcategory="properties" data-property="scroll-behavior"></div>
+            </div>
+        </div>
+        <footer>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior" target="_blank" class="info">
+                En savoir plus
+            </a>
+        </footer>
+    </section>
+
+    <section id="interpolate-size">
+        <h3>Interpolation de taille</h3>
+        <div class="container">
+            <div class="col" style="flex: 2">
+                <p>
+                    Lorsque l'on souhaite effectuer une animation lors de l'apparition d'un élément, le code suivant ne
+                    fonctionne pas :
+                </p>
+                <pre><code class="language-css">.box {
+    height: 0;
+    transition: height 0.3s;
+}
+
+.box.active {
+    height: 100px;
+}</code></pre>
+            </div>
+            <div class="col">
+                <div class="compatibility-box" data-category="css" data-subcategory="properties" data-property="interpolate-size"></div>
+            </div>
+        </div>
+        <p>
+            Cependant, sur les navigateurs compatibles, il est possible d'utiliser l'interpolation de taille
+            pour contourner ce problème :
+        </p>
+        <pre><code class="language-css">.box {
+    height: 0;
+    interpolate-size: allow-keywords;
+    transition: height 0.3s;
+}</code></pre>
+    </section>
+
+</section>
